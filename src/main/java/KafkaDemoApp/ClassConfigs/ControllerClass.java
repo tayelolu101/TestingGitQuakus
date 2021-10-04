@@ -8,20 +8,21 @@ import org.springframework.web.bind.annotation.*;
 public class ControllerClass {
 
     private final Message message;
-    private final KafkaProducerConfig kafkaProducerConfig;
+    private final KafkaService kafkaService;
 
     @Autowired
-    public ControllerClass(Message message, KafkaProducerConfig kafkaProducerConfig) {
+    public ControllerClass(Message message, KafkaProducerConfig kafkaProducerConfig, KafkaService kafkaService) {
         this.message = message;
-        this.kafkaProducerConfig = kafkaProducerConfig;
+        this.kafkaService = kafkaService;
+
     }
 
-    @PostMapping (value = "/messages", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping (value = "messages/{message}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String GetKafkaMessage(@PathVariable("messages") String messages) throws Exception {
+    public String GetKafkaMessage(@PathVariable("message") String messages) throws Exception {
         try {
             message.setMssg(messages);
-            kafkaProducerConfig.SendMessage(message);
+            kafkaService.SendMessage(message);
 
         }catch (Exception ex){
             throw new Exception("Error with request");

@@ -1,5 +1,6 @@
-package KafkaDemoApp.ClassConfigs;
+package KafkaDemoApp.ClassConfigs.Producer;
 
+import KafkaDemoApp.ClassConfigs.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

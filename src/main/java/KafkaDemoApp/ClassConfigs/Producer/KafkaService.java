@@ -1,5 +1,7 @@
-package KafkaDemoApp.ClassConfigs;
+package KafkaDemoApp.ClassConfigs.Producer;
 
+import KafkaDemoApp.ClassConfigs.KafkaData;
+import KafkaDemoApp.ClassConfigs.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,13 +18,11 @@ public class KafkaService {
     @Value("${message.url.add}")
     private final String url = "";
     private KafkaTemplate<String, Message> kafkaTemplate;
-    private KafkaData kafkaData;
 
     private static Logger log = LoggerFactory.getLogger("KafkaService");
 
-    public KafkaService(KafkaTemplate<String, Message> kafkaTemplate, KafkaData kafkaData) {
+    public KafkaService(KafkaTemplate<String, Message> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
-        this.kafkaData = kafkaData;
     }
 
     public void SendMessage(Message mssg) throws Exception {
@@ -30,16 +30,16 @@ public class KafkaService {
         try {
             Mono<KafkaData> dataMonoList = WebClient.create()
                     .get()
-                    .uri(url)
+                    .uri(url.replace("", mssg.getMssg()))
                     .accept(MediaType.APPLICATION_JSON)
                     .retrieve()
                     .bodyToMono(KafkaData.class);
 
-            dataMonoList.subscribe(KafkaData -> {
-                KafkaData.data
-                        .forEach(Message -> {
-                            kafkaTemplate.send(Topic, mssg);
-                            log.info("Published first Message : {}, to topic : {}", mssg, Topic);
+            dataMonoList.subscribe(kafkadatas -> {
+                kafkadatas.data
+                        .forEach(message -> {
+                            kafkaTemplate.send(Topic, message);
+                            log.info("Published first Message : {}, to topic : {}", mssg.getMssg(), Topic);
                         });
 
                 });

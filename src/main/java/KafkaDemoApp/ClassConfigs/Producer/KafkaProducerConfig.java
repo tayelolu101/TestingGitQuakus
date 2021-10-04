@@ -1,5 +1,6 @@
-package KafkaDemoApp.ClassConfigs;
+package KafkaDemoApp.ClassConfigs.Producer;
 
+import KafkaDemoApp.ClassConfigs.Message;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

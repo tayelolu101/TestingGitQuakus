@@ -22,9 +22,4 @@ public class KafkaDemoMain{
         SpringApplication.run(KafkaDemoMain.class);
     }
 
-    @KafkaListener(topics = "${message.topic.name}", groupId = "${spring.kafka.consumer.group-id}")
-    public void Kafkalistener(String Msg){
-        LOG.info("Received  Message in group : {}", Msg);
-    }
-
 }

@@ -23,7 +23,7 @@ import java.util.Map;
 @Component
 public class KafkaProducerConfig {
 
-    private static final Logger log = LoggerFactory.getLogger("KafkaProducerConfig");
+    private static final Logger log = LoggerFactory.getLogger(KafkaProducerConfig.class);
 
     @Value("${spring.kafka.bootstrap-servers}")
     private String serverAddress;

@@ -12,7 +12,7 @@ public class ControllerClass {
     private final KafkaService kafkaService;
 
     @Autowired
-    public ControllerClass(Message message, KafkaProducerConfig kafkaProducerConfig, KafkaService kafkaService) {
+    public ControllerClass(Message message, KafkaService kafkaService) {
         this.message = message;
         this.kafkaService = kafkaService;
 

@@ -6,6 +6,15 @@ import org.springframework.stereotype.Component;
 public class Message {
 
     private String mssg;
+    private  boolean isDead;
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
 
     public String getMssg() {
         return mssg;

@@ -19,7 +19,7 @@ public class KafkaService {
     private final String url = "";
     private KafkaTemplate<String, Message> kafkaTemplate;
 
-    private static Logger log = LoggerFactory.getLogger("KafkaService");
+    private static Logger log = LoggerFactory.getLogger(KafkaService.class);
 
     public KafkaService(KafkaTemplate<String, Message> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;

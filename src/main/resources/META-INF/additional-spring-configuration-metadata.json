@@ -4,5 +4,10 @@
       "name": "message.topic.name",
       "type": "java.lang.String",
       "description": "Description for message.topic.name."
-  }
-] }
+    },
+    {
+      "name": "spring.cloud.stream.function.definition",
+      "type": "java.lang.String",
+      "description": "Description for spring.cloud.stream.function.definition."
+    }
+  ] }

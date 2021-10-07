@@ -33,7 +33,7 @@ spring.cloud.stream:
       destination: KafkaTopic
   kafka:
     bindings:
-      domainProcessor-in-0:
+      domainProcessor-out-0:
         consumer:
           configuration:
             value:
